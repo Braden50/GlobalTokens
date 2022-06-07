@@ -1,0 +1,60 @@
+
+
+
+.ListButtonTab {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* CSS */
+.ListButton {
+  margin: 5px 20px;
+  appearance: none;
+  background-color: #e9c46a;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  /* font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600; */
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.ListButton:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.ListButton:hover {
+  background-color: #f4a261;
+}
+
+.ListButton:focus {
+  box-shadow: #f4a261 0 0 0 3px;
+  outline: none;
+}
+
+/* .ListButton:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+} */
+
+.ListButton:active {
+  background-color: #c8864f;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}

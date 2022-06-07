@@ -1,0 +1,81 @@
+
+.ImageList {
+    padding: 5px;
+}
+
+.ImageBar {
+    padding: 5px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #2a9d8f;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #e9c46a;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e76f51;
+  }
+
+
+.scrollbar {
+    margin: 20px 5px;
+    padding: 5px;
+    border: 0;
+    height: 575px;
+    overflow-y: auto;
+    border-radius: 15px;
+    
+}
+
+.align-but-right {
+    position:absolute;
+    right: 0;
+    color: purple;
+}
+
+
+.accordion {
+    background: #264653;
+    border-radius: 15px;
+    /* margin: 15px 5px; */
+}
+
+.accordion-item {
+    background: #264653;
+    padding: 0px;
+    border-color: #e76f51;
+    color: white;
+}
+
+.accordian-header {
+    background-color: #f4a261;
+}
+
+.accordian-body {
+    color: white;
+    background-color: white;
+}
+
+.accordion-button {
+    color: black;
+    background-color: #e9c46a;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: #e76f51;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
