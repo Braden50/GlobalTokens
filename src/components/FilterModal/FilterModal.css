@@ -1,0 +1,13 @@
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element {
+    color: rgb(0, 0, 0) !important;
+}
+
+ul > li {
+    color:#000;
+}

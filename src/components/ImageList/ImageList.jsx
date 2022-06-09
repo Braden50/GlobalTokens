@@ -2,75 +2,90 @@ import "./ImageList.css"
 
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 import { useState } from "react";
+import AccordionButton from "react-bootstrap/esm/AccordionButton";
 
-
-// const testGeoJson = {
-//     'type': 'Feature',
-//     'geometry': {
-//     'type': 'Polygon',
-//     'coordinates': [
-//         [-67.13734, 45.13745],
-//         [-66.96466, 44.8097],
-//         [-68.03252, 44.3252],
-//         [-69.06, 43.98],
-//         [-70.11617, 43.68405],
-//         [-70.64573, 43.09008],
-//         [-70.75102, 43.08003],
-//         [-70.79761, 43.21973],
-//         [-70.98176, 43.36789],
-//         [-70.94416, 43.46633],
-//         [-71.08482, 45.30524],
-//         [-70.66002, 45.46022],
-//         [-70.30495, 45.91479],
-//         [-70.00014, 46.69317],
-//         [-69.23708, 47.44777],
-//         [-68.90478, 47.18479],
-//         [-68.2343, 47.35462],
-//         [-67.79035, 47.06624],
-//         [-67.79141, 45.70258],
-//         [-67.13734, 45.13745]]
-//     }
-// }
-
-
-// const geoJsonTest2 = {
-//     "type": "Feature",
-//     "geometry": {
-//       "type": "Polygon",
-//       "coordinates": [
-//         [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
-//       ]
-//     },
-//     "properties": {
-//       "prop0": "value0",
-//       "prop1": 0.0
-//     }
-// }
 
 
 
 function ImageBar(props) {
-    const { image, index, setImage } = props
+    const { image, index, setViewImage } = props
     const [showImage, setShowImage] = useState(false)
+
+    const [showProperties, setShowProperties] = useState(false)
+    const openProperties = () => {setShowProperties(true)}
+    const closeProperties = () => {setShowProperties(false)}
+
+    const [showPurchaseConfirm, setShowPurchaseConfirm] = useState(false)
+    const openPurchaseConfirm = () => {setShowPurchaseConfirm(true)}
+    const closePurchaseConfirm = () => {setShowPurchaseConfirm(false)}
+
+    var img_props = image.features[0].properties
+    img_props["coords"] = image.features[0].geometry.coordinates
+
 
     function setImageToDisplay() {
         try {
-            setImage(image)
+            setViewImage(image)
         } catch (err) {
             console.log(err)
         }
         
     }
-
     
+
+    function purchase() {
+        closePurchaseConfirm()
+    }
+
+
     return (
         <Accordion.Item eventKey={index}>
-            <Accordion.Header>{image.properties.name}</Accordion.Header>
+            <Accordion.Header>{img_props.name} - {img_props.price} SOL</Accordion.Header>
             <Accordion.Body>
-                <button onClick={setImageToDisplay} className="ListButton align-but-right">Show On Map</button>
+                <div className="flex-container">
+                    <button onClick={setImageToDisplay} className="ListButton">Show On Map</button>
+                    <button onClick={openProperties} className="ListButton">Show Properties</button>
+                </div>
+                <div className="flex-container">
+                    <button onClick={openPurchaseConfirm} className="ListButton">Purchase</button>
+                </div>
             </Accordion.Body>
+            <Modal show={showProperties} onHide={closeProperties}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Properties</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {<ul>
+                        {Object.keys(img_props).map((key, i) => 
+                            <li key={i}>{key}: {img_props[key]}</li>)}
+                    </ul>}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={closeProperties}>
+                    Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={showPurchaseConfirm} onHide={closePurchaseConfirm}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Purchase Confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Initiate purchase for {img_props.price} SOL?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={closePurchaseConfirm}>
+                    Close
+                    </Button>
+                    <Button variant="primary" onClick={purchase}>
+                    Confirm
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Accordion.Item>
     )
 }
@@ -82,13 +97,13 @@ function ImageBar(props) {
 
 export default function ImageList(props) {  
     
-    const { images, setImage } = props       // list of image json objects
+    const { images, setViewImage } = props       // list of image json objects
     const imgList = Object.assign(images)
     return (
         <div className="scrollbar">
             <Accordion> 
                 { imgList.length ? (
-                    imgList.map((image, i) => <ImageBar image={image} key={i} index={i} setImage={setImage}/>)
+                    imgList.map((image, i) => <ImageBar image={image} key={i} index={i} setViewImage={setViewImage}/>)
                 ) : (
                     <h4>No Images</h4>
                 )}   

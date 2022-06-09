@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createRef } from "react";
 
 import {
-  useRouteMatch,
-  useNaviate,
-  useParams,
   useNavigate,
 } from "react-router-dom";
 //import { ArrowLeft, Star } from "react-feather";
 //import { motion, AnimatePresence } from "framer-motion";
 import { GeolocateControl } from "mapbox-gl";
-import ReactMapboxGl, { ScaleControl, GeoJSONLayer, Cluster, Marker, Source, Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { ScaleControl, GeoJSONLayer, MapContext, Cluster, Marker, Source, Layer, Feature } from "react-mapbox-gl";
 import "./Map.scss";
 
 import Tabs from 'react-bootstrap/Tabs';
@@ -20,7 +17,7 @@ import Tab from 'react-bootstrap/TabPane';
 import MarketTab from "../../components/MarketTab/MarketTab";
 import WalletTab from "../../components/WalletTab/WalletTab";
 
-import getTestGeoJsons from "../../assets/getTestGeoJsons";
+import getTestGeoJsons from "../../utils/getTestGeoJsons";
 
 import { geohash } from "ngeohash";
 
@@ -128,20 +125,34 @@ export default function Map() {
   //const [userLocation, setUserLocation] = useState(null);
   const [zoom, setZoom] = useState([11]);
   const [displayedImage, setDisplayedImage] = useState()
-
-  // const lat = 35.296017;
-  // const long = -120.676579;
+  const [mapBounds, setMapBounds] = useState()
 
 
   var geohash = require('ngeohash');
-  // console.log(geohash.encode(37.8324, 112.5584));
-  // // prints ww8p1r4t8
-  // var latlon = geohash.decode('ww8p1r4t8');
 
+  const getCoordGeoHash = (coord) => {
+    const hash = geohash.encode(coord[0], coord[1], 8)
+    console.log(coord, hash)
+    return hash
+  }
+
+  const getSquareCoords = (coords) => {
+    
+  }
+
+  const getGeoCoords = (imgJson) => {
+    if (imgJson.features) {
+      return imgJson.features[0].geometry.coordinates[0]
+    }
+    else {
+      console.log("Wrong format")
+      return imgJson.geometry.coordinates[0]
+    }
+  }
 
   const getAverageCoord = (imgJson) => {
     // console.log("HERE", imgJson)
-    const coordinates = imgJson.geometry.coordinates[0];
+    const coordinates = getGeoCoords(imgJson)
     return coordinates.reduce(
       (sums, coord) => [sums[0] + coord[0], sums[1] + coord[1]],
       [0, 0]).map((sum) => sum / coordinates.length)
@@ -149,23 +160,20 @@ export default function Map() {
 
 
   const getImageGeoHash = (imgJson) => {
-    const hashes = imgJson.geometry.coordinates.map(geohash.encode)
-    console.log(hashes)
-  }
+    const coords = getGeoCoords(imgJson)
+    const hashes = coords.map(getCoordGeoHash)
 
-  // NOTE: imgJson is a feature whereas displayedImage is a featurecollection
+    console.log(coords, hashes)
+  }
+  // getImageGeoHash(testGeoJson)
+
+
   const updateMapImage = (imgJson) => {
-    // if (!displayedImage) {
-    //   console.log("NO")
-    // }
-    const formattedImgJson = {
-      'type': 'FeatureCollection',
-      'features': [imgJson]
-    }
-    console.log("Updating map...", formattedImgJson)
-    setDisplayedImage(formattedImgJson);
+    getImageGeoHash(imgJson)
+    // console.log("Updating map...", imgJson)
+    setDisplayedImage(imgJson);
     const avgCoord = getAverageCoord(imgJson);
-    console.log("Avg",avgCoord);
+    // console.log("Avg",avgCoord);
     setMapLocation(avgCoord)
     // if (displayedImage) {
     //   console.log(displayedImage)
@@ -182,26 +190,29 @@ export default function Map() {
    * @param {*} map mapbox instance
    */
   function onMapLoad(map) {
-    const geoControl = new GeolocateControl({ trackUserLocation: true });
-    // if (lat && long) {
-    //   setMapLocation([lat, long])
-    // }
-    map.addControl(geoControl);
-    geoControl.on("geolocate", (e) => {
-      setMapLocation([e.coords.longitude, e.coords.latitude]);
+    map.on('render', () => {
+      setMapBounds(map.getBounds().toArray());
     });
+    // const geoControl = new GeolocateControl({ trackUserLocation: true });
+    // // if (lat && long) {
+    // //   setMapLocation([lat, long])
+    // // }
+    // map.addControl(geoControl);
+    // geoControl.on("geolocate", (e) => {
+    //   setMapLocation([e.coords.longitude, e.coords.latitude]);
+    // });
+    // setMapBounds(bounds)
   }
 
-  /**
-   * Called to highlight image geometry on map
-   */
+  // function updateSavedMapBounds(bounds) {
+  //   if (mapBounds != bounds) {
+  //     console.log("Hi")
+  //     setMapBounds(bounds)
+  //   }
+  // }
+  // var mapRef = null
 
-  if (displayedImage) {
-    console.log(1, displayedImage)
-    console.log(2, testGeoJson)
-  }
   return (
-    
     <div className="MapPage">
       <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css" rel="stylesheet" />
       <article className="Map">
@@ -211,33 +222,17 @@ export default function Map() {
           containerStyle={mapStyles}
           center={mapLocation}
           zoom={zoom}
-          // onStyleLoad={onMapLoad}
+          onStyleLoad={onMapLoad}
           renderChildrenInPortal={true}
         >
-          {/* { displayedImage &&
-          <Layer
-            type="fill"
-            paint={{
-              "fill-color": "#0091cd",
-              "fill-opacity": 0.2,
+          {/* <MapContext.Consumer>
+            {(map) => {
+              console.log(map.getBounds().toArray())
+              mapRef = map
+              // updateSavedMapBounds(map.getBounds().toArray())
+              // use `map` here
             }}
-          >
-            <Feature
-              coordinates={displayedImage.features[0].geometry.coordinates[0]}
-            />
-          </Layer>
-          } */}
-          {/* <Layer
-            type="fill"
-            paint={{
-              "fill-color": "#0091cd",
-              "fill-opacity": 0.2,
-            }}
-          >
-            <Feature
-              coordinates={test_coords}
-            />
-          </Layer> */}
+          </MapContext.Consumer> */}
           { displayedImage &&
           <GeoJSONLayer 
             key="2"
@@ -259,7 +254,7 @@ export default function Map() {
       </article>
       <article className="TabBar">
         <div className="CatalogTitle">
-          <h1>Catalog</h1>
+          <h1>GlobalTokens</h1>
         </div>
         
         
@@ -267,12 +262,12 @@ export default function Map() {
           <Tabs defaultActiveKey="market" id="image-tabbar" className="CatalogTabBar">
             <Tab eventKey="market" title="Market">
               <div className="list-wrapper-inner"> 
-                <MarketTab setImage={updateMapImage}/>
+                <MarketTab setViewImage={updateMapImage} mapBounds={mapBounds}/>
               </div>
             </Tab>
             <Tab eventKey="wallet" title="Wallet">
               <div className="list-wrapper-inner">
-                <WalletTab setImage={updateMapImage}/>
+                <WalletTab setViewImage={updateMapImage}/>
               </div>
             </Tab>
           </Tabs>

@@ -46,19 +46,24 @@ function createTestGeoJson() {
         [-67.13734, 45.13745]]
     console.log(3, test_coords)
     console.log(4, coords)
-    const testGeoJson = {
-        'type': 'Feature',
-        'geometry': {
-            'type': 'Polygon',
-            'coordinates': [coords]
-        },
-        'properties': {
-            "name": "Red band over Columbia",
-            "token": "keyVal",  // address of TokenManager
-            'satellite': sats[Math.floor(Math.random() * (sats.length - 1))],
-            'prop1': "yes",
-            "prop2": "ye"
-        }
+    const testGeoJson = 
+    {
+        "type": "FeatureCollection",
+        "features": [
+        {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': [coords]
+            },
+            'properties': {
+                "name": "Red band over Columbia",
+                "token": "keyVal",  // address of TokenManager
+                'satellite': sats[Math.floor(Math.random() * (sats.length - 1))],
+                'prop1': "yes",
+                "prop2": "ye"
+            }
+        }]
     }
     return testGeoJson;
 }

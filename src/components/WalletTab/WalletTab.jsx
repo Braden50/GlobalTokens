@@ -1,66 +1,66 @@
 
 // import Logout from "../../util/Logout"
 import ImageList from "../ImageList/ImageList";
+import FilterModal from "../FilterModal/FilterModal";
 
 import "./WalletTab.css"
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import getTestGeoJsons from "../../assets/getTestGeoJsons";
+import getTestGeoJsons from "../../utils/getTestGeoJsons";
+import { getImageJsons } from "../../utils/util";
 
-// const testImageJson1 = {
-//     'name': 'Test1',
-//     'key': 'token1'
-//   };
-  
-// const testImageJson2 = {
-//     'name': 'Test2',
-//     'key': 'token2'
-// };
 
-// const testImageJson3 = {
-//     'name': 'Test3',
-//     'key': 'token3'
-// };
 
-// const testImages = [testImageJson1, testImageJson2];
-
-const testImages = [];
-for (var i = 0; i < 15; i++) {
-    testImages.push({
-        'name': 'Test' + i,
-        'key': 'token' + i
-    })
-}
 
   
 export default function WalletTab(props) {
-    const { setImage } = props;
-    // console.log(setImage)
+    const { setViewImage } = props;
     const navigation = useNavigate()
-    const [images, setImages] = useState([]);
-    // console.log(images)
-    // console.log(images.length)
-    
+    const [walletImages, setWalletImages] = useState([]);
+
+    const [walletFilters, setWalletFilters] = useState([])
+
+    const [showWalletFilters, setShowWalletFilters] = useState(false);
+    const closeFilters = () => setShowWalletFilters(false);
+    const openFilters = () => setShowWalletFilters(true);
+
 
     function logout() {
         localStorage.clear()
         navigation("/login")
     }
 
-    function refresh() {
-        setImages(getTestGeoJsons(2))
-        // console.log(images)
+    async function refresh() {
+        var images = await getImageJsons()
+        console.log("pre", images)
+        for (var i=0; i<walletFilters.length; i++) {
+            // console.log(walletFilters[i])
+            images = images.filter(walletFilters[i])
+            console.log(images)
+        }
+        setWalletImages(images)
     }
+
+    function setNewWalletFilters(filters) {
+        setWalletFilters(filters)
+        closeFilters();
+    };
 
     return (
         <div>
             <div className="ListButtonTab">
-                <button onClick={() => {refresh()}} className="ListButton">Refresh</button> 
-                <button onClick={() => {logout()}} className="ListButton">Log Out</button>
+                <button onClick={refresh} className="ListButton">Refresh</button> 
+                <button onClick={openFilters} className="ListButton">Filters</button> 
+                <button onClick={logout} className="ListButton">Log Out</button>
             </div>
-            <ImageList images={images} setImage={setImage}></ImageList>
+            <ImageList images={walletImages} setViewImage={setViewImage}></ImageList>
+            <FilterModal 
+                showFilters={showWalletFilters}
+                setFilters={setNewWalletFilters}
+                closeFilters={closeFilters}
+            ></FilterModal>
         </div>
     )
 }

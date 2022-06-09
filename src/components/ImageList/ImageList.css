@@ -45,6 +45,11 @@
     color: purple;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
 .accordion {
     background: #264653;

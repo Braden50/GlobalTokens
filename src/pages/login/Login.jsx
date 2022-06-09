@@ -50,10 +50,10 @@ export default function Login() {
         loginSuccess();
       }
 
-      const accountInfo = await connection.getAccountInfo(new PublicKey(userKey))
-      console.log(accountInfo)
-      if (accountInfo) {
-        localStorage.setItem('user', accountInfo);
+      const userWalletInfo = await connection.getAccountInfo(new PublicKey(userKey))
+      // console.log(accountInfo)
+      if (userWalletInfo) {
+        localStorage.setItem('user', userWalletInfo);
         loginSuccess()
       }
       else {
@@ -70,8 +70,9 @@ export default function Login() {
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form className="login-form">
-          <h2 className="login-el">Login</h2>
+          <h1>GlobalTokens</h1>
           <div className="mb-3 login-el">
+            <h3 className="login-el">Login</h3>
             <label className="login-el">Solana Account Public Key</label>
             <input
               type="text"
