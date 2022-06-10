@@ -1,0 +1,58 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -109.0283203125,
+              37.020098201368114
+            ],
+            [
+              -102.0849609375,
+              37.020098201368114
+            ],
+            [
+              -102.0849609375,
+              40.9964840143779
+            ],
+            [
+              -109.0283203125,
+              40.9964840143779
+            ],
+            [
+              -109.0283203125,
+              37.020098201368114
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Colorado",
+        "token": "2",
+        "price": "0.2",
+        "satellite": "sentinel-8",
+        "date": "2022/01/02",
+        "on_chain": {
+          "candy_machine_address": "4pPeuiFLDdAaWTSRnmPSmyEsPBxfi8GuH2NeDh6Yd6YP",
+          "metadata_address":  "7vVSBHzmWwsTKpPdVnAq5dAgD1N6BsLjymMPXccpBWiE",
+          "metadata_authority":  "L9Ymx9z5CWX1hcG45D2pDPyQrNxUoc1PfQVnFC5bxmu",
+          "master_edition_address":  "AxDJX2SX9KuV9SiE7VbtT4kPRxPpxWSLbramHMwuFLjE",
+          "mint_address":  "GS4PxRzAfDQT6md2mFZe5osJuH7N35HbPPN9gWtEnnrD",
+          "PDA_address":  "HxNzzHvkAPeC9Ho8NR16kRhYR3nRSHcvTSNecuTtnEVh",
+          "record_address":  "2eStbSyt4sbommVN83dkiW3XvRW1wVzJE6UNTnrD8hkA",
+          "collection":  {
+            "collectionMetadata": "7vVSBHzmWwsTKpPdVnAq5dAgD1N6BsLjymMPXccpBWiE",
+            "collectionPDA": "HxNzzHvkAPeC9Ho8NR16kRhYR3nRSHcvTSNecuTtnEVh",
+            "txId": "33PoqwyhqjnXsHGaxfmy4TgkNfSqVEPMrTFeEBmdfL2ZZrfGwFsfr5yHjiFCn436RJPNwhrFgditqDKFESYTSnmQ"
+          }
+        },
+        "go_live_stamp": "1640419200"
+    }
+    }
+  ]
+}
+

@@ -12,7 +12,6 @@ import {
 import Map from "./pages/map/Map"
 import Test from "./pages/test/Test"
 import Login from './pages/login/Login';
-import Tokens from './pages/tokens/Tokens';
 
 import { useEffect } from "react";
 
@@ -36,10 +35,9 @@ function App() {
     <main id="App">
       <Router>
         <Routes>
-          <Route path="/map" element={<Map/>} />
-          <Route path="/tokens" element={<Tokens/>} />
+          <Route path="/*" element={<Map/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/*" element={<Test/>} />
+          <Route path="/test" element={<Test/>} />
         </Routes>
       </Router>
     </main>

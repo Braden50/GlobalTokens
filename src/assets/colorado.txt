@@ -1,0 +1,13 @@
+Candy machine address:  4pPeuiFLDdAaWTSRnmPSmyEsPBxfi8GuH2NeDh6Yd6YP
+Collection metadata address:  7vVSBHzmWwsTKpPdVnAq5dAgD1N6BsLjymMPXccpBWiE
+Collection metadata authority:  L9Ymx9z5CWX1hcG45D2pDPyQrNxUoc1PfQVnFC5bxmu
+Collection master edition address:  AxDJX2SX9KuV9SiE7VbtT4kPRxPpxWSLbramHMwuFLjE
+Collection mint address:  GS4PxRzAfDQT6md2mFZe5osJuH7N35HbPPN9gWtEnnrD
+Collection PDA address:  HxNzzHvkAPeC9Ho8NR16kRhYR3nRSHcvTSNecuTtnEVh
+Collection authority record address:  2eStbSyt4sbommVN83dkiW3XvRW1wVzJE6UNTnrD8hkA
+Collection:  {
+  collectionMetadata: '7vVSBHzmWwsTKpPdVnAq5dAgD1N6BsLjymMPXccpBWiE',
+  collectionPDA: 'HxNzzHvkAPeC9Ho8NR16kRhYR3nRSHcvTSNecuTtnEVh',
+  txId: '33PoqwyhqjnXsHGaxfmy4TgkNfSqVEPMrTFeEBmdfL2ZZrfGwFsfr5yHjiFCn436RJPNwhrFgditqDKFESYTSnmQ'
+}
+initialized config for a candy machine with publickey: 4pPeuiFLDdAaWTSRnmPSmyEsPBxfi8GuH2NeDh6Yd6YP

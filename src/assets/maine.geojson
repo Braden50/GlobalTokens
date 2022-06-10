@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [[
+        [-67.13734, 45.13745],
+        [-66.96466, 44.8097],
+        [-68.03252, 44.3252],
+        [-69.06, 43.98],
+        [-70.11617, 43.68405],
+        [-70.64573, 43.09008],
+        [-70.75102, 43.08003],
+        [-70.79761, 43.21973],
+        [-70.98176, 43.36789],
+        [-70.94416, 43.46633],
+        [-71.08482, 45.30524],
+        [-70.66002, 45.46022],
+        [-70.30495, 45.91479],
+        [-70.00014, 46.69317],
+        [-69.23708, 47.44777],
+        [-68.90478, 47.18479],
+        [-68.2343, 47.35462],
+        [-67.79035, 47.06624],
+        [-67.79141, 45.70258],
+        [-67.13734, 45.13745]]]
+    },
+    "properties": {
+        "name": "Maine",
+        "token": "HaQPMoVwyJvvjqhE2WEwtPQYqf6LNh7DpBi83Va993EW",
+        "price": "0.1",
+        "satellite": "landsat-8",
+        "on_chain": {
+          "candy_machine_address": "HaQPMoVwyJvvjqhE2WEwtPQYqf6LNh7DpBi83Va993EW",
+          "metadata_address":  "5NC45xXy8x3nQFmeuBzE5Vrgjsrp1sMbJB1rt9JhS6Ni",
+          "metadata_authority":  "L9Ymx9z5CWX1hcG45D2pDPyQrNxUoc1PfQVnFC5bxmu",
+          "master_edition_address":  "HFp1dRtfyNMCBT23gMVaL95Z29cccwXHSv8UzRd8GR2z",
+          "mint_address":  "8dBFyjqquYDUjMau8hxd8wvpoZxrc3RhoAiWzLFXoMfr",
+          "PDA_address":  "3iPL5zUuHhdk19jNLVgmTp1PHFgzWVKYnZUo6CcpmBm5",
+          "record_address":  "4nauje8TfYLLCMwZfxDnrh1KSt8Xs8NH9usJ7usXinix",
+          "collection":  {
+            "collectionMetadata": "5NC45xXy8x3nQFmeuBzE5Vrgjsrp1sMbJB1rt9JhS6Ni",
+            "collectionPDA": "3iPL5zUuHhdk19jNLVgmTp1PHFgzWVKYnZUo6CcpmBm5",
+            "txId": "3RtYpt2g5CgRaXT7vHhN3iUnB8o6KPBJuSsbdCFAVV2FiGL62EcdHvrB1XPkP1PpqbxY2QFsEGWEezJ3uFvSjJub"
+          },
+          "go_live_stamp": "1640419200"
+        }
+      }
+    }
+  ]
+}

@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js"

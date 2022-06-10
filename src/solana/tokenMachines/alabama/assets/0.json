@@ -1,0 +1,24 @@
+{
+    "name": "alabama",
+    "symbol": "alabama",
+    "description": "",
+    "image": "0.png",
+    "animation_url": "",
+    "external_url": "<https://drive.google.com/uc?export=download&id=1stRzHJAiO-tY3cnhigOCIB2um2DsQ2yO>",
+    "attributes": [],
+    "properties": {
+      "files": [
+        {
+          "uri": "0.png",
+          "type": "image/png"
+        }
+      ],
+      "category": "image",
+      "creators": [
+        {
+          "address": "L9Ymx9z5CWX1hcG45D2pDPyQrNxUoc1PfQVnFC5bxmu",
+          "share": 100
+        }
+      ]
+    }
+  }

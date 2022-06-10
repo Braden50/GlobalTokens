@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.472900390625,
+              30.38235321766959
+            ],
+            [
+              -85.01220703125,
+              30.38235321766959
+            ],
+            [
+              -85.01220703125,
+              35.146862906756304
+            ],
+            [
+              -88.472900390625,
+              35.146862906756304
+            ],
+            [
+              -88.472900390625,
+              30.38235321766959
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Alabama",
+        "token": "3",
+        "price": "0.05",
+        "satellite": "landsat-7",
+        "on_chain": {
+          "candy_machine_address": "ktvf7DF8gH9ceMW1CfpCCwT2q9Jt4r9QVUN57DNVXJP",
+          "metadata_address":  "8RWujpN9Wu29UqXyhdX2jjYRH9DKZ7ccbqfZPkw4Jv4",
+          "metadata_authority":  "L9Ymx9z5CWX1hcG45D2pDPyQrNxUoc1PfQVnFC5bxmu",
+          "master_edition_address":  "4BJY72SDroaDMVtov2FSrwZD9NUJA6V3m33hGW36ksSE",
+          "mint_address":  "3QeiH7BHXtgffsZJ8qN9QXBXeMnQNqtDE6YZKaf2woH4",
+          "PDA_address":  "FzzgDw3npbppfJNnUR4Umkbftt9PnKPbrLk3Fk56Tdpc",
+          "record_address":  "B1J2sdfVTb3Qd5kAeX2LxMMAzL5SFB1RxVTPz9zodEqa",
+          "collection":  {
+            "collectionMetadata": "8RWujpN9Wu29UqXyhdX2jjYRH9DKZ7ccbqfZPkw4Jv4",
+            "collectionPDA": "FzzgDw3npbppfJNnUR4Umkbftt9PnKPbrLk3Fk56Tdpc",
+            "txId": "4UkNy8UJ6tW6TLK35xWeXus1aq8R6bMDNzDsrB4vkjx6FRfDjSwXHide5ETbkHqXaBtonC1vEekJxF8DtAbfpema"
+          },
+          "go_live_stamp": "1640419200"
+
+        }
+    }
+    }
+  ]
+}
