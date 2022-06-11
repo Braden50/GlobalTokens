@@ -87,7 +87,10 @@ export default function MarketTab(props) {
                 <Modal.Header closeButton>
                     <Modal.Title>Upload</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Upload GEOJSON or populate form</Modal.Body>
+                <Modal.Body>
+                    Upload GEOJSON: 
+                    <input type="file"/>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeUpload}>
                     Close

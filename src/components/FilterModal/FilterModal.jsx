@@ -8,6 +8,7 @@ export default function FilterModal(props) {
     
     const [ minPrice, setMinPrice ] = useState()
     const [ maxPrice, setMaxPrice ] = useState()
+    const [ mintAddress, setMintAddress ] = useState()
     const [ existingKeys, setExistingKeys ] = useState([])
     const [ keysToMatch, setKeysToMatch ] = useState({})
 
@@ -66,6 +67,14 @@ export default function FilterModal(props) {
                         onChange={(event) => {setMaxPrice(parseFloat(event.target.value))}}
                         step="0.01"
                     ></input> SOL
+                    <br></br>
+                    Mint Address = <input
+                        type="text"
+                        id="mintAddress"
+                        placeholder={mintAddress}
+                        onChange={(event) => {setMintAddress(parseFloat(event.target.value))}}
+                    ></input>
+
                     {/* <Button variant="secondary" onClick={closeFilters()}>
                     Close
                     </Button>
